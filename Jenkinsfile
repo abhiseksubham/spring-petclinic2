@@ -45,17 +45,6 @@ pipeline {
         stage('Integration and Performance Tests') {
           steps {
             sh './mvnw verify'
-          }
-        }
-
-        stage('Archive JUnit formatted test results') {
-          agent {
-            node {
-              label 'test'
-            }
-
-          }
-          steps {
             junit '**/target/surefire-reports/'
           }
         }
